@@ -7,8 +7,9 @@ verify_ssl = true
 
 [packages]
 tensorflow = "*"
-#ray = {version = "*",extras = ["rllib"]}
-ray = "*"
+tensorflow-probability="*"
+ray = {version = "*",extras = ["rllib"]}
+#ray = "*"
 matplotlib = "*"
 pytest = "*"
 
