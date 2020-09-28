@@ -2,6 +2,7 @@ import tensorflow as tf
 import ray
 from tensorflow_probability import distributions as tfd
 
+
 def main():
     ray.init()
 
