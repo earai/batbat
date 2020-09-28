@@ -1,3 +1,4 @@
+import tensorflow as tf
 from batbat.batbatenv import BatBatEnv
 
 
@@ -23,15 +24,18 @@ def test_step():
     batter_action_dict = {BatBatEnv.BATTER: BatBatEnv.NO_SWING}
     batter_obs, batter_dones, batter_rewards, batter_info = x.step(batter_action_dict)
 
+
     assert pitcher_dones == {}
     assert pitcher_info == {}
     assert pitcher_rewards == {BatBatEnv.PITCHER: 0,
                                BatBatEnv.BATTER: 0}
 
-    assert pitcher_obs["turn"] == 1
-    assert batter_obs["turn"] == 2
-    assert pitcher_obs["n_strikes"] + pitcher_obs["n_balls"] == 0
-    assert batter_obs["n_strikes"] + batter_obs["n_balls"] == 1
+    for k in [BatBatEnv.PITCHER, BatBatEnv.BATTER]:
+
+        assert pitcher_obs[k]["turn"] == 1
+        assert batter_obs[k]["turn"] == 2
+        assert pitcher_obs[k]["n_strikes"] + pitcher_obs[k]["n_balls"] == 0
+        assert batter_obs[k]["n_strikes"] + batter_obs[k]["n_balls"] == 1
     assert batter_dones == {}
     assert batter_info == {}
     assert batter_rewards == {BatBatEnv.PITCHER: 0,

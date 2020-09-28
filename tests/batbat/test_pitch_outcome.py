@@ -1,6 +1,5 @@
 import tensorflow as tf
-from batbat.batbatenv import BatBatEnv
-from batbat.pitch_outcome import hit_distribution, pitch_outcome
+from batbat.pitch_outcome import hit_distribution, encode_pitch_outcome
 import pytest
 
 
@@ -24,6 +23,6 @@ def test_hit_distribution(pitch_type, swing, expected_in_zone, expected_hit):
                           (1, 1, 0, 0),
                           (1, 1, 1, 2),
                           (0, 1, 0, 0)])
-def test_pitch_outcome(in_zone, swing, hit, expected_outcome):
-    x = pitch_outcome(in_zone, swing, hit)
+def test_encode_pitch_outcome(in_zone, swing, hit, expected_outcome):
+    x = encode_pitch_outcom(in_zone, swing, hit)
     assert x == expected_outcome
